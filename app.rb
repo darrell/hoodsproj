@@ -5,7 +5,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require './environments'
 require 'json'
-
+require 'rgeo/geo_json'
 
 class Entry < ActiveRecord::Base
 end
@@ -19,9 +19,12 @@ post "/" do
   puts js
   JSON.parse(js).each do |feature|
     name=feature['properties']['name']
-    Entry.create(json: feature.to_json, name: name)
+
+    # this is hacky
+    geom=RGeo::GeoJSON.decode(feature)
+    Entry.create(json: feature.to_json, name: name, geom: geom.geometry.as_text)
   end
-  redirect "/"
+  redirect "/results"
 end
 
 get "/results" do

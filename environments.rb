@@ -1,7 +1,7 @@
 configure do
 
   ActiveRecord::Base.establish_connection(
-    :adapter  => 'postgresql',
+    :adapter  => 'postgis',
     :host     => 'localhost',
     :database => 'nbohood',
     :encoding => 'utf8'
