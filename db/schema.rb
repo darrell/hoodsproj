@@ -14,9 +14,12 @@ ActiveRecord::Schema.define(version: 20130710155923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "entries", force: true do |t|
-    t.text "json"
+    t.text    "name"
+    t.text    "json"
+    t.spatial "geom", limit: {:srid=>0, :type=>"polygon"}
   end
 
 end

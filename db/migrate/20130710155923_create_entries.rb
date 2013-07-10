@@ -3,6 +3,9 @@ class CreateEntries < ActiveRecord::Migration
     create_table :entries do |t|
       t.text :name
       t.text :json
+      if ActiveRecord::Base.connection.adapter_name == 'PostGIS'
+        t.polygon :geom
+      end
     end
   end
 

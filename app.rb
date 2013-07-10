@@ -19,10 +19,13 @@ post "/" do
   puts js
   JSON.parse(js).each do |feature|
     name=feature['properties']['name']
-
+    ent=Entry.create(json: feature.to_json, name: name)
     # this is hacky
-    geom=RGeo::GeoJSON.decode(feature)
-    Entry.create(json: feature.to_json, name: name, geom: geom.geometry.as_text)
+    if ActiveRecord::Base.connection.adapter_name == 'PostGIS'
+      geom=RGeo::GeoJSON.decode(feature)
+      ent.geom=RGeo::GeoJSON.decode(feature).geometry.as_text
+      ent.save
+    end
   end
   redirect "/results"
 end
