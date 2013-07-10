@@ -1,0 +1,16 @@
+ var hoodColors = [
+        {name:"Speer",color:"#A6CEE3"},
+        {name:"East Colfax",color:"#1F78B4"},
+        {name:"Capitol Hill",color:"#B2DF8A"},
+        {name:"Five Points",color:"#33A02C"},
+        {name:"Westwood",color:"#FB9A99"},
+        {name:"University Park",color:"#E31A1C"},
+        {name:"Hilltop",color:"#FDBF6F"},
+        {name:"Globeville",color:"#FF7F00"},
+        {name:"Berkeley",color:"#CAB2D6"},
+        {name:"Virginia Village",color:"#6A3D9A"},
+        {name:"Ruby Hill",color:"#D47384"},
+        {name:"Mar Lee",color:"#604860"},
+        {name:"Hale",color:"#00688B"},
+        {name:"Congress Park",color:"#236B8E"},
+        ];
